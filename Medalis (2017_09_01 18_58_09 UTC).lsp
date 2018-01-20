@@ -1,0 +1,13 @@
+; medalio braizymas
+(DEFUN C:medalio()
+  (setq taskas1 (getpoint "\n Iveskite kampinio kairiojo tasko koordinates (x,y):"))
+  (setq taskas2 (list (-(car taskas1) 25)(+(cadr taskas1) 50)))
+  (setq taskas3 (list (+(car taskas2) 80)(cadr taskas2)))
+  (setq taskas4 (list (-(car taskas3) 25)(-(cadr taskas3) 50)))
+  (command "LINE" taskas1 taskas2 taskas3 taskas4 "C")
+  (setq spindulys1 50)
+  (setq spindulys2 40)
+  (setq centras (list (+(car taskas1) 15)(-(cadr taskas1) 47.5)))
+  (command "CIRCLE" centras spindulys1 )
+  (command "CIRCLE" centras spindulys2 )
+  (command "TRIM" spindulys1 taskas1 taskas4))
